@@ -1,6 +1,7 @@
 package com.project.shoestore.core.infrastructure.controllers;
 
-import com.project.shoestore.core.domain.ports.IControllerPort;
+import com.project.shoestore.core.adapters.controllers.ControllerAdapter;
+import com.project.shoestore.core.adapters.controllers.ports.ControllerAdapterPort;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public class CoreController<D, ID> {
-  private final IControllerPort<D, ID> adapter;
+  private final ControllerAdapterPort<D, ID> adapter;
 
   /**
    * Handles the creation of a new resource.
