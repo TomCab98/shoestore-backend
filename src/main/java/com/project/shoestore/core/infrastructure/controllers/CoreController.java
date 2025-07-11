@@ -1,6 +1,5 @@
 package com.project.shoestore.core.infrastructure.controllers;
 
-import com.project.shoestore.core.adapters.controllers.ControllerAdapter;
 import com.project.shoestore.core.adapters.controllers.ports.ControllerAdapterPort;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

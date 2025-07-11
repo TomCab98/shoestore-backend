@@ -1,7 +1,9 @@
 package com.project.shoestore.product.infrastructure.repositories.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "product")
 public class ProductEntity {

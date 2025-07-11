@@ -39,10 +39,10 @@ public class SecurityConfig {
         http.requestMatchers(HttpMethod.POST, "/employee/**").hasAnyRole(RoleEnum.ADMIN.name(), RoleEnum.MANAGER.name());
         http.requestMatchers(HttpMethod.PUT, "/employee/**").hasAnyRole(RoleEnum.ADMIN.name(), RoleEnum.MANAGER.name());
         http.requestMatchers(HttpMethod.DELETE, "/employee/**").hasRole(RoleEnum.ADMIN.name());
-        http.requestMatchers("/category/**").hasRole(RoleEnum.MANAGER.name());
-        http.requestMatchers("/brand/**").hasRole(RoleEnum.MANAGER.name());
-        http.requestMatchers("/size/**").hasRole(RoleEnum.MANAGER.name());
-        http.requestMatchers("/product/**").authenticated();
+          http.requestMatchers("/category/**").anonymous();
+          http.requestMatchers("/brand/**").anonymous();
+          http.requestMatchers("/size/**").anonymous();
+          http.requestMatchers("/product/**").anonymous();
         http.requestMatchers("/auth/login").anonymous();
       })
       .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
