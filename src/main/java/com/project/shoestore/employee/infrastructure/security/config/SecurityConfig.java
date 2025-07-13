@@ -45,6 +45,7 @@ public class SecurityConfig {
         http.requestMatchers("/product/**").anonymous();
         http.requestMatchers("/auth/login").anonymous();
         http.requestMatchers("/provider/**").anonymous();
+        http.requestMatchers("/client/**").anonymous();
       })
       .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
       .cors(Customizer.withDefaults())
