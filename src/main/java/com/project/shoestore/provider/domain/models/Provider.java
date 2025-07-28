@@ -11,6 +11,10 @@ public class Provider {
 
   public Provider() {}
 
+  public Provider(String id) {
+    this.id = id;
+  }
+
   public Provider(String id, String dni, String name, String lastName, Integer phone, String address, String email) {
     this.id = id;
     this.dni = dni;
