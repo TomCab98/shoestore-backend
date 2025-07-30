@@ -1,5 +1,6 @@
 package com.project.shoestore.order.infrastructure.repositories.entities;
 
+import com.project.shoestore.order.infrastructure.repositories.ids.OrderDetailId;
 import com.project.shoestore.product.infrastructure.repositories.entities.ProductEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,12 +11,12 @@ import lombok.Data;
 public class OrderDetailEntity {
 
   @EmbeddedId
-  OrderDetailId id = new OrderDetailId();
+  OrderDetailId id;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @MapsId("orderId")
   @JoinColumn(name = "order_id")
-  private OrderEntity order;
+  OrderEntity order;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @MapsId("productId")

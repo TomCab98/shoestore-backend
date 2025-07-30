@@ -1,4 +1,4 @@
-package com.project.shoestore.order.infrastructure.repositories.entities;
+package com.project.shoestore.order.infrastructure.repositories.ids;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

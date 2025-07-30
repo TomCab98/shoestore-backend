@@ -19,7 +19,7 @@ public class CreateService<M, ID> implements ICreateService<M> {
     try {
       return repository.create(model);
     } catch (DataIntegrityViolationException | ConstraintViolationException e) {
-      throw new IllegalArgumentException("Foreign key constraint fails");
+      throw new IllegalArgumentException("Foreign key constraint fails " + e.getMessage());
     } catch (Exception e) {
       throw new DatabaseAccessException("Fail saving in database " + model.toString() + e.getMessage());
     }

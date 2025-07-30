@@ -11,16 +11,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
     database-platform: org.hibernate.dialect.MariaDBDialect
-
-logging:
-  level:
-    org.springframework.security: INFO
-    org.hibernate.SQL: DEBUG
 
 security:
   jwt:

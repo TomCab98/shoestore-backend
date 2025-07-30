@@ -61,4 +61,9 @@ public class Order {
   public void setDetails(List<OrderDetail> details) {
     this.details = details;
   }
+
+  @Override
+  public String toString() {
+    return "Order { id = " + id  + ", date = " + date + ", total = " + total + ", provider = " + provider + ", details = " + details + " }";
+  }
 }

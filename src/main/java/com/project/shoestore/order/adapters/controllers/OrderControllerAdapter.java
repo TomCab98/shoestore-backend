@@ -50,24 +50,14 @@ public class OrderControllerAdapter extends ControllerAdapter<Order, OrderDto, S
 
   @Override
   public OrderDto create(OrderDto dto) {
-    Optional<Provider> provider = providerRepository.findById(dto.provider());
-    if (provider.isEmpty()) {
-      throw new NotFoundException("not found provider");
-    }
-
     List<OrderDetail> details = new ArrayList<>();
 
     for (OrderDetailDto detailDto: dto.details()) {
-      Optional<Product> product = productRepository.findById(detailDto.product());
-      if (product.isEmpty()) {
-        throw new NotFoundException("not found product " + detailDto.product());
-      }
-
-      OrderDetail detail = orderDetailMapper.toDomain(detailDto, product.get());
+      OrderDetail detail = orderDetailMapper.toDomain(detailDto);
       details.add(detail);
     }
 
-    Order order = mapper.toDomain(dto, provider.get());
+    Order order = mapper.toDomain(dto);
     order.setDetails(details);
     Order created = createService.create(order);
     return mapper.toDto(created);

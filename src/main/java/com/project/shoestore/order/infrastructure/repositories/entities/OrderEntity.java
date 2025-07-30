@@ -4,6 +4,7 @@ import com.project.shoestore.provider.infrastructure.repositories.entities.Provi
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class OrderEntity {
   ProviderEntity provider;
 
   @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-  List<OrderDetailEntity> details;
+  List<OrderDetailEntity> details = new ArrayList<>();
 
   public void addDetails(OrderDetailEntity detail) {
     detail.setOrder(this);

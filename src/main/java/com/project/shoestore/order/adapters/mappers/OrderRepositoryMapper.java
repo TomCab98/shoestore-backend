@@ -8,17 +8,11 @@ import com.project.shoestore.provider.adapters.mappers.ProviderRepositoryMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(
-  componentModel = "spring",
-  uses = {
-    ProviderRepositoryMapper.class,
-    OrderDetailRepositoryMapper.class,
-    ProductRepositoryMapper.class
-  }
-)
+@Mapper(componentModel = "spring")
 public interface OrderRepositoryMapper extends RepositoryMapper<Order, OrderEntity> {
 
   @Override
   @Mapping(target = "details", ignore = true)
+  @Mapping(target = "provider", ignore = true)
   OrderEntity toEntity(Order order);
 }
