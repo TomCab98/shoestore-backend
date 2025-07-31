@@ -24,6 +24,10 @@ public class Product {
     this.size = size;
   }
 
+  public Product(String id) {
+    this.id = id;
+  }
+
   public String getId() {
     return id;
   }
