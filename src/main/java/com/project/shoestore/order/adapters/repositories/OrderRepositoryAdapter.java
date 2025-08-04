@@ -15,14 +15,10 @@ import com.project.shoestore.product.infrastructure.repositories.ProductReposito
 import com.project.shoestore.product.infrastructure.repositories.entities.ProductEntity;
 import com.project.shoestore.provider.infrastructure.repositories.ProviderRepository;
 import com.project.shoestore.provider.infrastructure.repositories.entities.ProviderEntity;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-@Slf4j
 @Component
 public class OrderRepositoryAdapter extends RepositoryAdapter<Order, OrderEntity, String> implements IOrderRepositoryPort {
-  private final OrderRepositoryMapper mapper;
-  private final OrderRepository repository;
   private final OrderDetailRepositoryMapper detailsMapper;
   private final ProductRepository productRepository;
   private final ProviderRepository providerRepository;
@@ -35,8 +31,6 @@ public class OrderRepositoryAdapter extends RepositoryAdapter<Order, OrderEntity
     ProviderRepository providerRepository
   ) {
     super(repository, mapper);
-    this.mapper = mapper;
-    this.repository = repository;
     this.detailsMapper = detailsMapper;
     this.productRepository = productRepository;
     this.providerRepository = providerRepository;

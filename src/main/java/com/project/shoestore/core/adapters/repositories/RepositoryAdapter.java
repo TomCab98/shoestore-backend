@@ -21,8 +21,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RepositoryAdapter<M, E, ID> implements IRepositoryPort<M, ID> {
 
-  private final IRepository<E, ID> repository;
-  private final RepositoryMapper<M, E> mapper;
+  protected final IRepository<E, ID> repository;
+  protected final RepositoryMapper<M, E> mapper;
 
   /**
    * Persists a new domain model by mapping it to a persistence entity and saving it.
