@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FindService<M, ID> implements IFindService<M, ID> {
-  private final IRepositoryPort<M, ID> repository;
+  protected final IRepositoryPort<M, ID> repository;
 
   public FindService(IRepositoryPort<M, ID> repository) {
     this.repository = repository;

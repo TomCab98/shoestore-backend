@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public class CoreController<D, ID> {
-  private final ControllerAdapterPort<D, ID> adapter;
+  protected final ControllerAdapterPort<D, ID> adapter;
 
   /**
    * Handles the creation of a new resource.
