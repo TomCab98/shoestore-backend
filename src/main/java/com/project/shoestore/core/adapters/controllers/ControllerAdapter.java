@@ -19,11 +19,11 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public class ControllerAdapter<M, D, ID> implements ControllerAdapterPort<D, ID> {
-  private final CreateService<M, ID> createService;
-  private final UpdateService<M, ID> updateService;
-  private final FindService<M, ID> findService;
-  private final DeleteService<M, ID> deleteService;
-  private final ControllerMapper<M, D> mapper;
+  protected final CreateService<M, ID> createService;
+  protected final UpdateService<M, ID> updateService;
+  protected final FindService<M, ID> findService;
+  protected final DeleteService<M, ID> deleteService;
+  protected final ControllerMapper<M, D> mapper;
 
   @Override
   public D create(D dto) {
