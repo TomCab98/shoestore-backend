@@ -1,10 +1,10 @@
 package com.project.shoestore.sales.infrastructure.config;
 
+import com.project.shoestore.product.domain.usecases.FindProductService;
+import com.project.shoestore.product.domain.usecases.UpdateProductService;
 import com.project.shoestore.sales.adapters.repositories.SaleRepositoryAdapter;
-import com.project.shoestore.sales.domain.usecases.CreateSaleService;
-import com.project.shoestore.sales.domain.usecases.DeleteSaleService;
-import com.project.shoestore.sales.domain.usecases.FindSaleService;
-import com.project.shoestore.sales.domain.usecases.UpdateSaleService;
+import com.project.shoestore.sales.domain.ports.ISaleRepositoryPort;
+import com.project.shoestore.sales.domain.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,5 +28,14 @@ public class SaleBeansConfig {
   @Bean
   public FindSaleService findSaleService(SaleRepositoryAdapter repository) {
     return new FindSaleService(repository);
+  }
+
+  @Bean
+  public RefundProductService refundProductService(
+    ISaleRepositoryPort repository,
+    UpdateProductService updateProductService,
+    FindProductService findProductService
+  ) {
+    return new RefundProductService(repository, updateProductService, findProductService);
   }
 }

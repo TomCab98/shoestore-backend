@@ -91,4 +91,9 @@ public class Product {
   public void setSize(Size size) {
     this.size = size;
   }
+
+  @Override
+  public String toString() {
+    return "Product { id = " + id + ", name = " + name + ", price = " + price + ", minStock = " + minStock + ", stock = " + stock + ", brand = " + brand + ", category = " + category + ", size = " + size + " }";
+  }
 }
