@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProductControllerAdapter extends ControllerAdapter<Product, ProductDto, String> {
+  private final UpdateProductService updateService;
+
   public ProductControllerAdapter(
     CreateProductService createService,
     UpdateProductService updateService,
@@ -20,5 +22,11 @@ public class ProductControllerAdapter extends ControllerAdapter<Product, Product
     ProductControllerMapper mapper
   ) {
     super(createService, updateService, findService, deleteService, mapper);
+    this.updateService = updateService;
+  }
+
+  public ProductDto addStock(String productId, Integer quantity) {
+    Product product = updateService.addStock(productId, quantity);
+    return mapper.toDto(product);
   }
 }

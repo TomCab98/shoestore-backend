@@ -13,6 +13,7 @@ public interface RefundRepositoryMapper extends RepositoryMapper<Refund, RefundE
 
   @Override
   @Mapping(target = "detail", ignore = true)
+  @Mapping(target = "status", ignore = true)
   RefundEntity toEntity(Refund model);
 
   @Override
