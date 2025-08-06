@@ -8,6 +8,7 @@ import java.util.List;
 
 public record SaleDto(
   String id,
+  String status,
 
   @JsonFormat(pattern = "dd-MM-yyyy")
   @NotNull(message = "date is required")

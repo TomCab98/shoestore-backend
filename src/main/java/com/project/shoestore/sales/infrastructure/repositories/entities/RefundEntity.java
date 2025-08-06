@@ -26,4 +26,8 @@ public class  RefundEntity {
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
   })
   SaleDetailEntity detail;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
+  private StatusEntity status;
 }

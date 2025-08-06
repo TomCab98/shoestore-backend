@@ -8,15 +8,17 @@ public class Refund {
   private String reason;
   private String product;
   private String sale;
+  private Status status;
 
   public Refund() {}
 
-  public Refund(String id, Date date, String reason, String product, String sale) {
+  public Refund(String id, Date date, String reason, String product, String sale, Status status) {
     this.id = id;
     this.date = date;
     this.reason = reason;
     this.product = product;
     this.sale = sale;
+    this.status = status;
   }
 
   public String getId() {
@@ -57,5 +59,13 @@ public class Refund {
 
   public void setSale(String sale) {
     this.sale = sale;
+  }
+
+  public Status getStatus() {
+    return status;
+  }
+
+  public void setStatus(Status status) {
+    this.status = status;
   }
 }

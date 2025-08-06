@@ -18,9 +18,11 @@ import com.project.shoestore.sales.domain.ports.ISaleRepositoryPort;
 import com.project.shoestore.sales.infrastructure.repositories.RefundRepository;
 import com.project.shoestore.sales.infrastructure.repositories.SaleDetailRepository;
 import com.project.shoestore.sales.infrastructure.repositories.SaleRepository;
+import com.project.shoestore.sales.infrastructure.repositories.StatusRepository;
 import com.project.shoestore.sales.infrastructure.repositories.entities.RefundEntity;
 import com.project.shoestore.sales.infrastructure.repositories.entities.SaleDetailEntity;
 import com.project.shoestore.sales.infrastructure.repositories.entities.SaleEntity;
+import com.project.shoestore.sales.infrastructure.repositories.entities.StatusEntity;
 import com.project.shoestore.sales.infrastructure.repositories.ids.SaleDetailId;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +35,7 @@ public class SaleRepositoryAdapter extends RepositoryAdapter<Sale, SaleEntity, S
   private final RefundRepositoryMapper refundMapper;
   private final SaleDetailRepository detailRepository;
   private final RefundRepository refundRepository;
+  private final StatusRepository statusRepository;
 
   public SaleRepositoryAdapter(
     SaleRepository repository,
@@ -43,7 +46,8 @@ public class SaleRepositoryAdapter extends RepositoryAdapter<Sale, SaleEntity, S
     ProductRepository productRepository,
     RefundRepositoryMapper refundMapper,
     SaleDetailRepository detailRepository,
-    RefundRepository refundRepository
+    RefundRepository refundRepository,
+    StatusRepository statusRepository
   ) {
     super(repository, mapper);
     this.clientRepository = clientRepository;
@@ -53,6 +57,7 @@ public class SaleRepositoryAdapter extends RepositoryAdapter<Sale, SaleEntity, S
     this.refundMapper = refundMapper;
     this.detailRepository = detailRepository;
     this.refundRepository = refundRepository;
+    this.statusRepository = statusRepository;
   }
 
   @Override
@@ -63,9 +68,12 @@ public class SaleRepositoryAdapter extends RepositoryAdapter<Sale, SaleEntity, S
     ClientEntity client = clientRepository.findById(sale.getClient().getId())
       .orElseThrow(() -> new NotFoundException("not found client"));
 
+    StatusEntity status = statusRepository.findByName(sale.getStatus().name());
+
     SaleEntity saleEntity = mapper.toEntity(sale);
     saleEntity.setClient(client);
     saleEntity.setEmployee(employee);
+    saleEntity.setStatus(status);
 
     for (SaleDetail detail: sale.getDetails()) {
       SaleDetailEntity detailEntity = detailMapper.toEntity(detail);
@@ -90,9 +98,11 @@ public class SaleRepositoryAdapter extends RepositoryAdapter<Sale, SaleEntity, S
     SaleDetailId detailId = new SaleDetailId(refund.getProduct(), refund.getSale());
     SaleDetailEntity detailEntity = detailRepository.findById(detailId)
       .orElseThrow(() -> new NotFoundException("not found sale"));
+    StatusEntity status = statusRepository.findByName(refund.getStatus().name());
 
     RefundEntity entity = refundMapper.toEntity(refund);
     entity.setDetail(detailEntity);
+    entity.setStatus(status);
 
     refundRepository.save(entity);
   }
