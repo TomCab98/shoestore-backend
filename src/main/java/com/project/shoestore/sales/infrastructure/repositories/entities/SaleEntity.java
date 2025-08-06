@@ -36,6 +36,10 @@ public class SaleEntity {
   @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
   List<SaleDetailEntity> details = new ArrayList<>();
 
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
+  private StatusEntity status;
+
   public void addDetails(SaleDetailEntity detail) {
     detail.setSale(this);
     this.details.add(detail);

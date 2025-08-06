@@ -8,6 +8,8 @@ import java.util.Date;
 
 public record RefundDto(
   String id,
+  String reason,
+  String status,
 
   @NotBlank(message = "product is required")
   String product,
@@ -17,7 +19,5 @@ public record RefundDto(
 
   @JsonFormat(pattern = "dd-MM-yyyy")
   @NotNull(message = "date is required")
-  Date date,
-
-  String reason
+  Date date
 ) {}

@@ -13,16 +13,18 @@ public class Sale {
   private Employee employee;
   private Client client;
   private List<SaleDetail> details;
+  private Status status;
 
   public Sale() {}
 
-  public Sale(String id, Date date, Float total, Employee employee, Client client, List<SaleDetail> details) {
+  public Sale(String id, Date date, Float total, Employee employee, Client client, List<SaleDetail> details, Status status) {
     this.id = id;
     this.date = date;
     this.total = total;
     this.employee = employee;
     this.client = client;
     this.details = details;
+    this.status = status;
   }
 
   public String getId() {
@@ -73,8 +75,16 @@ public class Sale {
     this.details = details;
   }
 
+  public Status getStatus() {
+    return status;
+  }
+
+  public void setStatus(Status status) {
+    this.status = status;
+  }
+
   @Override
   public String toString() {
-    return "Sale { id = " + id + ", date = " + date + ", total = " + total + ", employee = " + employee + ", client = " + client + ", details = " + details + " }";
+    return "Sale { id = " + id + ", date = " + date + ", total = " + total + ", employee = " + employee + ", client = " + client + ", details = " + details + ", status = " + status + " }";
   }
 }
