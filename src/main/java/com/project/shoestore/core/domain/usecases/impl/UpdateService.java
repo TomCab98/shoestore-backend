@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class UpdateService<M, ID> implements IUpdateService<M, ID> {
-  private final IRepositoryPort<M, ID> repository;
+  protected final IRepositoryPort<M, ID> repository;
 
   public UpdateService(IRepositoryPort<M, ID> repository) {
     this.repository = repository;

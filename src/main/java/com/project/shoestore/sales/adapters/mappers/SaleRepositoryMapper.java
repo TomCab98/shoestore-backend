@@ -15,6 +15,7 @@ public interface SaleRepositoryMapper extends RepositoryMapper<Sale, SaleEntity>
   @Mapping(target = "client", ignore = true)
   @Mapping(target = "employee", ignore = true)
   @Mapping(target = "details", ignore = true)
+  @Mapping(target = "status", ignore = true)
   SaleEntity toEntity(Sale order);
 
   @Override
