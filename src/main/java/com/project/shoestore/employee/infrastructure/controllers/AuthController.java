@@ -3,6 +3,7 @@ package com.project.shoestore.employee.infrastructure.controllers;
 import com.project.shoestore.employee.infrastructure.dtos.AuthRequestDto;
 import com.project.shoestore.employee.infrastructure.dtos.AuthResponseDto;
 import com.project.shoestore.employee.infrastructure.security.UserDetailServiceImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Auth", description = "Endpoints for login and authentication")
 public class AuthController {
 
   @Autowired
