@@ -2,6 +2,11 @@ server:
   port: 8080
 
 spring:
+  sql:
+    init:
+      mode: always
+      platform: mariadb
+
   datasource:
     url: jdbc:mariadb://localhost:3306/shoe-store
     username: root
