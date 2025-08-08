@@ -5,10 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-@Schema(description = "DTO representing a product in the shoe store")
 public record ProductDto(
 
-  @Schema(description = "Unique identifier of the product", example = "f195d3ce-064f-4bf0-9310-5467a5fe2f79")
+  @Schema(description = "The ID of the product", example = "f195d3ce-064f-4bf0-9310-5467a5fe2f79")
   String id,
 
   @Schema(description = "Minimum stock before triggering alert", example = "5")
@@ -16,7 +15,6 @@ public record ProductDto(
 
   @NotBlank(message = "The name cannot be blank")
   @Size(max = 100, min = 3, message = "The product name cannot be longer than 100 characters and less than 3 characters.")
-  @Schema(description = "Name of the product", example = "Zapatilla deportiva Nike")
   String name,
 
   @NotNull(message = "The amount of stock is required")
@@ -28,15 +26,14 @@ public record ProductDto(
   Float price,
 
   @NotNull(message = "The size is required")
-  @Schema(description = "Shoe size", example = "42")
+  @Schema(description = "The size ID", example = "42")
   Integer size,
 
   @NotBlank(message = "The product category is required")
-  @Schema(description = "Product category (e.g., Casual, Deportivo, Elegante)", example = "Deportivo")
+  @Schema(description = "The category ID")
   String category,
 
   @NotBlank(message = "The product brand is required")
-  @Schema(description = "Brand of the product", example = "Nike")
+  @Schema(description = "The brand ID")
   String brand
-
 ) {}

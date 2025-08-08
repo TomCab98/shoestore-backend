@@ -22,7 +22,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/product")
-@Tag(name = "Product", description = "Endpoints for product management")
 public class ProductController extends CoreController<ProductDto, String> implements IProductController {
   private final ProductControllerAdapter adapter;
 
@@ -32,6 +31,7 @@ public class ProductController extends CoreController<ProductDto, String> implem
   }
 
   @Override
+  @PutMapping("/add-stock/{id}")
   public ResponseEntity<?> addProductStock(
     @PathVariable String id,
     @RequestBody AddStockRequest request

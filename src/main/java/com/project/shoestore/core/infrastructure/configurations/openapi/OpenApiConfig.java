@@ -11,9 +11,9 @@ public class OpenApiConfig {
   public OpenAPI customOpenApi() {
     return new OpenAPI()
       .info(new Info()
-        .title("Shoe store system API")
+        .title("Shoe store management system API")
         .version("1.0")
-        .description("Documentation for the shoe store management system")
+        .description("This documentation includes all the endpoints of the shoe store management system, including CRUD operations and other more specific endpoints, as well as the schemas that handle them. It is currently in version 1.0, so the documentation will be expanded as new features are developed and implemented.")
       );
   }
 }
