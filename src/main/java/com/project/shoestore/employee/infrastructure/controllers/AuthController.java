@@ -1,5 +1,6 @@
 package com.project.shoestore.employee.infrastructure.controllers;
 
+import com.project.shoestore.employee.infrastructure.controllers.interfaces.IAuthController;
 import com.project.shoestore.employee.infrastructure.dtos.AuthRequestDto;
 import com.project.shoestore.employee.infrastructure.dtos.AuthResponseDto;
 import com.project.shoestore.employee.infrastructure.security.UserDetailServiceImpl;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class AuthController implements IAuthController {
 
   @Autowired
   private UserDetailServiceImpl userDetailService;
